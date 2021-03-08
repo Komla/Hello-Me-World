@@ -1,0 +1,105 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "name": "Untitled2.ipynb",
+      "provenance": [],
+      "collapsed_sections": [],
+      "authorship_tag": "ABX9TyMYE7fayTRrnfiGctpPHhnd",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/Komla/Hello-Me-World/blob/master/fastai_Try\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "yE3dDqv6Hxnf",
+        "outputId": "f943c7df-a705-4018-f9ab-fa7227886df3"
+      },
+      "source": [
+        "!pip install -Uqq fastbook\n",
+        "import fastbook\n",
+        "fastbook.setup_book()\n",
+        "\n"
+      ],
+      "execution_count": 1,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "text": [
+            "\u001b[K     |████████████████████████████████| 727kB 9.0MB/s \n",
+            "\u001b[K     |████████████████████████████████| 194kB 10.4MB/s \n",
+            "\u001b[K     |████████████████████████████████| 51kB 6.9MB/s \n",
+            "\u001b[K     |████████████████████████████████| 1.2MB 16.3MB/s \n",
+            "\u001b[K     |████████████████████████████████| 61kB 7.3MB/s \n",
+            "\u001b[K     |████████████████████████████████| 51kB 6.5MB/s \n",
+            "\u001b[?25hMounted at /content/gdrive\n"
+          ],
+          "name": "stdout"
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 234
+        },
+        "id": "g5YygkjyI57k",
+        "outputId": "7950df61-33a3-4e4f-9d6c-4c3e924d4808"
+      },
+      "source": [
+        "from fastai.vision.all import *\n",
+        "path = untar_data(URLs.PETS)/'images'\n",
+        "dbunch = ImageDataLoader.from_name__func(path, get_image_files(path), valid_pct=0.2, label_func=lambda x: x[0].isuper(),\n",
+        "                            item_tfms=Resize(224))\n",
+        "learn = cnn_learner(dbunch, resnet34, metrics=error_rate)\n",
+        "learn.fine_tune(2)"
+      ],
+      "execution_count": 4,
+      "outputs": [
+        {
+          "output_type": "error",
+          "ename": "NameError",
+          "evalue": "ignored",
+          "traceback": [
+            "\u001b[0;31m---------------------------------------------------------------------------\u001b[0m",
+            "\u001b[0;31mNameError\u001b[0m                                 Traceback (most recent call last)",
+            "\u001b[0;32m<ipython-input-4-7777533ed7fc>\u001b[0m in \u001b[0;36m<module>\u001b[0;34m()\u001b[0m\n\u001b[1;32m      1\u001b[0m \u001b[0;32mfrom\u001b[0m \u001b[0mfastai\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mvision\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mall\u001b[0m \u001b[0;32mimport\u001b[0m \u001b[0;34m*\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m      2\u001b[0m \u001b[0mpath\u001b[0m \u001b[0;34m=\u001b[0m \u001b[0muntar_data\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0mURLs\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mPETS\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m/\u001b[0m\u001b[0;34m'images'\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0;32m----> 3\u001b[0;31m dbunch = ImageDataLoader.from_name__func(path, get_image_files(path), valid_pct=0.2, label_func=lambda x: x[0].isuper(),\n\u001b[0m\u001b[1;32m      4\u001b[0m                             item_tfms=Resize(224))\n\u001b[1;32m      5\u001b[0m \u001b[0mlearn\u001b[0m \u001b[0;34m=\u001b[0m \u001b[0mcnn_learner\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0mdbunch\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0mresnet34\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0mmetrics\u001b[0m\u001b[0;34m=\u001b[0m\u001b[0merror_rate\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n",
+            "\u001b[0;31mNameError\u001b[0m: name 'ImageDataLoader' is not defined"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "hujJcUIac3r_"
+      },
+      "source": [
+        ""
+      ],
+      "execution_count": null,
+      "outputs": []
+    }
+  ]
+}
